@@ -4,10 +4,12 @@ class Purchase < ActiveRecord::Base
   belongs_to :user
 
   def as_json(*args)
+    detailed = args.first[:detailed].present?
+
     attributes.merge({
       user: { username: user.username, avatar: user.gravatar },
       venue: { name: 'Apple Store', address: '567 George St.' },
-      likes: likes.collect { |l| l.user.username }
+      likes: detailed ? likes : likes.collect { |l| l.user.username }
     })
   end
 
