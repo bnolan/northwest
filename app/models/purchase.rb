@@ -6,7 +6,7 @@ class Purchase < ActiveRecord::Base
   def as_json(*args)
     attributes.merge({
       user: { username: user.username, avatar: user.gravatar },
-      venue: { name: 'apple store', address: '567 george st.' },
+      venue: { name: 'Apple Store', address: '567 George St.' },
       likes: likes.collect { |l| l.user.username }
     })
   end
