@@ -11,4 +11,12 @@ class Photo < ActiveRecord::Base
       where("not #{table_name}.private")
     end
   }
+
+  def as_json(*args)
+    {
+      id: id,
+      medium_url: image.url(:medium),
+      thumb_url: image.url(:thumb)
+    }
+  end
 end
