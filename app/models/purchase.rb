@@ -1,6 +1,7 @@
 class Purchase < ActiveRecord::Base
   scope :feed, -> (lat, long) { order('created_at desc').all }
   has_many :likes, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
   belongs_to :user
 
   def as_json(*args)
@@ -13,4 +14,7 @@ class Purchase < ActiveRecord::Base
     })
   end
 
+  scope :for_user, ->(user) {
+    where(user_id: user.id)
+  }
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resources :purchases, only: [:index, :show, :create, :like] do
       resource :likes, only: [:create, :destroy]
+      resources :photos
     end
   end
 
