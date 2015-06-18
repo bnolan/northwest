@@ -15,7 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
-/bin
 /log
 **/.DS_Store
 .env
