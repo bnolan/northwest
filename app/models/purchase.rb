@@ -1,5 +1,5 @@
 class Purchase < ActiveRecord::Base
-  scope :feed, -> (lat, long) { order('created_at desc').all }
+  scope :feed, -> (lat, long) { order('created_at desc').limit(20).all }
   has_many :likes, :dependent => :destroy
   has_many :photos, :dependent => :destroy
   belongs_to :user
